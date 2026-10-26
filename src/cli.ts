@@ -13,6 +13,7 @@ import { flushTelemetry } from './telemetry.ts';
 import { isRunningInAgent } from './detect-agent.ts';
 import { runUpdate } from './update.ts';
 import { runUse, parseUseOptions } from './use.ts';
+import { runMr, parseMrOptions } from './mr.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -151,6 +152,8 @@ ${BOLD}Manage Skills:${RESET}
                             https://github.com/vercel-labs/agent-skills
   use <package>@<skill>
                        Generate a prompt for using one skill without installing it
+  mr                   Send local edits of installed skills back to their source repo
+                       as a pull/merge request
   remove [skills]      Remove installed skills
   list, ls             List installed skills
   find [query]         Search for skills interactively
@@ -397,6 +400,11 @@ async function main(): Promise<void> {
         errors: useErrors,
       } = parseUseOptions(restArgs);
       await runUse(useSource, useOptions, useErrors);
+      break;
+    }
+    case 'mr': {
+      const { options: mrOptions, errors: mrErrors } = parseMrOptions(restArgs);
+      await runMr(mrOptions, mrErrors);
       break;
     }
     case 'remove':

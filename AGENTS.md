@@ -13,7 +13,7 @@ This file provides guidance to AI coding agents working on the `skills` CLI code
 | `skills`                      | Show banner with available commands                 |
 | `skills add <pkg>`            | Install skills from git repos, URLs, or local paths |
 | `skills use <pkg>@<skill>`    | Use one skill without installing                    |
-| `skills mr`                   | Commit, push, and open a PR/MR for local changes    |
+| `skills mr`                   | Send edited installed skills back to source as a PR |
 | `skills experimental_install` | Restore skills from skills-lock.json                |
 | `skills experimental_sync`    | Sync skills from node_modules into agent dirs       |
 | `skills list`                 | List installed skills (alias: `ls`)                 |
@@ -56,7 +56,7 @@ src/
 │   ├── types.ts
 │   └── wellknown.ts
 ├── init.test.ts     # Init command tests
-├── mr.ts            # Mr command - commit, push, open PR/MR (gh/glab)
+├── mr.ts            # Mr command - open PR/MR with local skill edits
 ├── mr.test.ts       # Mr command helper tests
 ├── use.ts           # Use command - generate a skill prompt or launch an agent
 ├── use.test.ts      # Use command tests

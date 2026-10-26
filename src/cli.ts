@@ -152,8 +152,8 @@ ${BOLD}Manage Skills:${RESET}
                             https://github.com/vercel-labs/agent-skills
   use <package>@<skill>
                        Generate a prompt for using one skill without installing it
-  mr                   Commit, push and open a pull/merge request for local changes
-                       (-m <title>, -b <base>, -d/--draft)
+  mr                   Send local edits of installed skills back to their source repo
+                       as a pull/merge request
   remove [skills]      Remove installed skills
   list, ls             List installed skills
   find [query]         Search for skills interactively
